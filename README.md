@@ -41,3 +41,7 @@ If you want to customize your build, such as adding a new webpack loader or plug
 ## Deploying Code
 
 After you run the `npm run build` command, your code will be built into a single bundle located at `dist/bundle.min.js` along with any other assets your project depended.
+
+## Code Template
+
+If you want to start your own project, here is a great template that we are using: https://github.com/photonstorm/phaser3-project-template
