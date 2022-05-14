@@ -1,0 +1,30 @@
+{
+  "name": "2d-game-of-nothing-phaser3-project",
+  "version": "1.0.0",
+  "description": "A 2D Dungeon Crawler game, using Phaser 3, Node, Express, PostgreSQL, Babel 7, AWS Elastic Beanstalk and Webpack 4.",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "webpack --config webpack/prod.js ",
+    "start": "webpack-dev-server --config webpack/base.js --open"
+  },
+  "keywords": [],
+  "author": "Kevin Laux, German Almonte, Omar Moreta",
+  "license": "ISC",
+  "dependencies": {
+    "phaser": "^3.55.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "raw-loader": "^4.0.2",
+    "terser-webpack-plugin": "^5.3.1",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0",
+    "webpack-merge": "^5.8.0"
+  }
+}
