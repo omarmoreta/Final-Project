@@ -20,28 +20,50 @@ After cloning the repo, run `npm install` from your project directory. Then, you
 
 After starting the development server with `npm start`, you can edit any files in the `src` folder and webpack will automatically recompile and reload your server.
 
-## Customizing the Template
-
-### Babel
-
-You can write modern ES6+ JavaScript and Babel will transpile it to a version of JavaScript that you want your project to support. The targeted browsers are set in the `.babelrc` file and the default currently targets all browsers with total usage over "0.25%" but excludes IE11 and Opera Mini.
-
-```
-"browsers": [
- ">0.25%",
- "not ie 11",
- "not op_mini all"
-]
-```
-
-### Webpack
-
-If you want to customize your build, such as adding a new webpack loader or plugin (i.e. for loading CSS or fonts), you can modify the `webpack/base.js` file for cross-project changes, or you can modify and/or create new configuration files and target them in specific npm tasks inside of `package.json'.
-
 ## Deploying Code
 
 After you run the `npm run build` command, your code will be built into a single bundle located at `dist/bundle.min.js` along with any other assets your project depended.
 
-## Code Template
+# NOTHING EMBASSY inc
 
-If you want to start your own project, here is a great template that we are using: https://github.com/photonstorm/phaser3-project-template
+## Members: 
+- German: Game Developer CEO
+- Omar: Hybrid Developer CEO
+- Kevin: Back End Developer CEO
+
+## Describe your application in 3-5 sentences. Include what the functionality is and why you’ve chosen it/what problem this solves: 
+	We’ve chosen to develop a little dungeon crawler where you’re a knight fighting through waves of ogres, looking to defeat the Ogre king. The faster the player clears it the more points they get and are put into a high score leaderboard once the game is cleared. The player will have up to 3 lives, after 3 lives are used up it will take him to the losing screen. If the player successfully defeats the ogres he will be taken to the winner screen, where it’ll show the high score page. 
+
+## What technologies are we using:
+
+### Front End: PhaserJS
+- Game Development
+
+### Back End: Node & Express + postgreSQL, Webpack, Babel
+- For High Score & User Authentication 
+- JSON Web Token
+
+### Deployment: AWS Elastic Beanstalk
+
+## What is the structure/schema of our documents/tables: 
+https://drive.google.com/file/d/1YD7-nO5_aam4GBDMjXVCtsl36sv1O4rN/view?usp=sharing
+
+## What tools are we using to track progress? (Asana, Trello, Docs) Please provide a link:
+
+We are using Github Project Issues in a kanban work environment.
+The Game of Nothing (github.com)
+
+## What are the features we hope to implement:
+	-Soundtrack
+	-SFX
+	-Scenes
+	-Hitbox
+	-Lives
+	-Levels
+	-Movement
+	-Mobile friendliness
+	-User Authentication
+	-Working High Score
+	-Better shortcut layout (Stretch Goal)
+	-Storing player progress
+	
