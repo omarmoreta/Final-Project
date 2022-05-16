@@ -16,7 +16,7 @@ export const config = {
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
   pixelArt: true,
-  title: "2D Dungeon Crawler",
+  title: "The Game of Nothing",
   version: "Beta 1.0",
   audio: {
     disableWebAudio: false,

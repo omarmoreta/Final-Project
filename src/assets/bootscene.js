@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import logoImg from "../../public/logo.png";
 
 export default class BootScene extends Phaser.Scene {
     constructor(){
@@ -54,6 +55,7 @@ export default class BootScene extends Phaser.Scene {
             percentText.destroy();
             assetText.destroy();
         });
+        this.load.image("logo", logoImg);
     }
     create(){
     this.cameras.main.fadeOut(1000, 0, 0, 0);
