@@ -11,7 +11,9 @@
   "author": "Kevin Laux, German Almonte, Omar Moreta",
   "license": "ISC",
   "dependencies": {
-    "phaser": "^3.55.2"
+    "phaser": "^3.55.2",
+    "sequelize": "^6.19.0",
+    "sequelize-cli": "^6.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",
