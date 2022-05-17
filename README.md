@@ -67,3 +67,19 @@ The Game of Nothing (github.com)
 	-Better shortcut layout (Stretch Goal)
 	-Storing player progress
 	
+## ChangeLogs
+From most recent commits down to the oldest.
+
+- added trolls and map
+- merging Mainmenu branch
+- merging Bootscene branch
+- heroku deployment test
+- debugging the deployment environment
+- added custom font to main menu
+- added temp music and sfx to main menu
+- added main menu
+- added Bootscene and config
+- edited readme config
+- updated readme to include google doc from noshua
+- adding license and source to README
+- Initial commit
