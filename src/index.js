@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+
 import logoImg from "../public/logo.png";
 
 class MyGame extends Phaser.Scene {
