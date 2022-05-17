@@ -1,4 +1,7 @@
 import Phaser from 'phaser'
+import logoImg from "../../public/logo.png";
+import mainMusic from "../../public/maintitlemusic.mp3"
+import eLaugh from "../../public/evil.mp3"
 
 export default class BootScene extends Phaser.Scene {
     constructor(){
@@ -54,6 +57,12 @@ export default class BootScene extends Phaser.Scene {
             percentText.destroy();
             assetText.destroy();
         });
+
+        // MAIN MENU
+        this.load.audio("elaugh", eLaugh)
+        this.load.audio("mainMusic", mainMusic);
+        this.load.image("logo", logoImg);
+        this.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
     }
     create(){
     this.cameras.main.fadeOut(1000, 0, 0, 0);
