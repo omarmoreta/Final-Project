@@ -25,16 +25,25 @@ export default class MainmenuScene extends Phaser.Scene {
         const screenCenterX = this.cameras.main.worldView.x + this.cameras.main.width / 2;
         const screenCenterY = this.cameras.main.worldView.y + this.cameras.main.height / 2;
         // VERSION
-        const gameversion = this.add.text(5, 5, '', { font: '12px Courier', fill: '#ffffff' });
-        gameversion.setText([
-            game.config.gameVersion
-        ]);
+    
         // LOGO
         this.add.image(screenCenterX, screenCenterY - 30, 'logo').setScale(0.3)
         // GAME TITLE
-        const maintitle = this.add.text(screenCenterX / 2 - 45, screenCenterY + 50, game.config.gameTitle, { font: '24px Courier', fill: '#DD636E' });
+        let add = this.add;
+        WebFont.load({
+            google: {
+                families: [ 'Rubik Glitch', 'Finger Paint', 'Nosifer' ]
+            },
+            active: function(){
+                const maintitle = add.text(screenCenterX / 2 - 30, screenCenterY + 50, game.config.gameTitle, { fontFamily: 'Rubik Glitch', fontSize: 24, fill: '#DD636E' });
+                const gameversion = add.text(5, 5, '', { fontFamily: 'Finger Paint', fontSize: 12, fill: '#ffffff' });
+                gameversion.setText([
+                    game.config.gameVersion
+                ]);
+            }
+        })
         // START INSTRUCTIONS
-        const instruction = this.add.text(screenCenterX / 2, screenCenterY + 80, 'Insert coin to start', { font: '16px Courier', fill: '#ffd700' });
+        const instruction = add.text(screenCenterX / 2 + 40, screenCenterY + 80, 'Insert coin to start', { fontFamily: 'Finger Paint', fontSize: 16, fill: '#ffd700' });
         // INSTRUCTION FLASH
         TweenHelper.flashElement(this, instruction)
         // FADE IN
