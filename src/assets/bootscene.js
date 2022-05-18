@@ -1,6 +1,7 @@
 import Phaser from "phaser";
 import logoImg from "../../public/logoxd.png";
 import mainMusic from "../../public/maintitlemusic.mp3"
+import gameMusic from "../../public/backgroundMusic.mp3"
 import eLaugh from "../../public/evil.mp3"
 import knightpng from "../../public/knight.png"
 import knightatlas from "../../public/knight_atlas.json"
@@ -77,6 +78,8 @@ export default class BootScene extends Phaser.Scene {
         this.load.tilemapTiledJSON("map", mapjson);
         // ENEMY ASSETS
         this.load.atlas("troll-enemy", trollpng, trolljson);
+        // GAME SFX / MUSIC
+        this.load.audio("backgroundMusic", gameMusic);
 
 
     }
