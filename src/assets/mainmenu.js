@@ -1,5 +1,5 @@
-import Phaser from 'phaser'
-import TweenHelper from './flashtext';
+import Phaser from "phaser";
+import TweenHelper from "./flashtext";
 let music;
 let laugh;
 
@@ -24,17 +24,15 @@ export default class MainmenuScene extends Phaser.Scene {
         // SCREEN POSITIONING
         const screenCenterX = this.cameras.main.worldView.x + this.cameras.main.width / 2;
         const screenCenterY = this.cameras.main.worldView.y + this.cameras.main.height / 2;
-        // VERSION
-    
         // LOGO
         this.add.image(screenCenterX, screenCenterY - 30, 'logo').setScale(0.3)
         // GAME TITLE
         let add = this.add;
         WebFont.load({
             google: {
-                families: [ 'Rubik Glitch', 'Finger Paint']
+                families: ['Rubik Glitch', 'Finger Paint']
             },
-            active: function(){
+            active: function () {
                 const maintitle = add.text(screenCenterX / 2 - 30, screenCenterY + 50, game.config.gameTitle, { fontFamily: 'Rubik Glitch', fontSize: 24, fill: '#DD636E' });
                 const gameversion = add.text(5, 5, '', { fontFamily: 'Finger Paint', fontSize: 12, fill: '#ffffff' });
                 gameversion.setText([
@@ -61,8 +59,6 @@ export default class MainmenuScene extends Phaser.Scene {
                 this.scene.start('Pause');
             })
         })
-
     }
-    update() {
-    };
+    update() { }
 }

@@ -1,8 +1,8 @@
 import Phaser from "phaser";
 import { config } from "./config.js";
-import MyGame from "./assets/game.js";
-import BootScene from "./assets/bootscene.js";
-import MainmenuScene from "./assets/mainmenu.js";
+import MyGame from "./assets/game";
+import BootScene from "./assets/bootscene";
+import MainmenuScene from "./assets/mainmenu";
 
 class Game extends Phaser.Game {
   constructor() {
@@ -16,4 +16,3 @@ class Game extends Phaser.Game {
 window.onload = function () {
   window.game = new Game();
 };
-
