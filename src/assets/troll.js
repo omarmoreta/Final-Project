@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import Entity from "./entity.js";
+import Entity from "./entity";
 
 export default class Troll extends Entity {
   constructor(scene, x, y, textureKey, damage, type, speed) {

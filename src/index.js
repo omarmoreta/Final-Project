@@ -1,8 +1,8 @@
 import Phaser from "phaser";
 import { config } from "./config.js";
-import MyGame from "../public/game";
-import BootScene from "../public/bootscene";
-import MainmenuScene from "../public/mainmenu";
+import MyGame from "./assets/game";
+import BootScene from "./assets/bootscene";
+import MainmenuScene from "./assets/mainmenu";
 
 class Game extends Phaser.Game {
   constructor() {

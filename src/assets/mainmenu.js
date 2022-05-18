@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import TweenHelper from "../../public/flashtext";
+import TweenHelper from "./flashtext";
 let music;
 let laugh;
 

@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import Troll from "./troll.js";
+import Troll from "./troll";
 
 export default class MyGame extends Phaser.Scene {
   constructor() {
@@ -26,6 +26,7 @@ export default class MyGame extends Phaser.Scene {
     this.trollLeft.body.setCollideWorldBounds(true).setImmovable(true);
     this.trollBig = new Troll(this, 240, 50, "troll-enemy").setScale(1.5);
     this.trollBig.body.setCollideWorldBounds(true).setImmovable(true);
+    blockedLayer.setCollisionByProperty({ collide: true });
   }
   update() {}
 }
