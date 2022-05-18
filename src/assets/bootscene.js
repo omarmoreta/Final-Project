@@ -2,6 +2,8 @@ import Phaser from 'phaser'
 import logoImg from "../../public/logo.png";
 import mainMusic from "../../public/maintitlemusic.mp3"
 import eLaugh from "../../public/evil.mp3"
+import knightpng from "../../public/knight.png"
+import knightatlas from "../../public/knight_atlas.json"
 
 export default class BootScene extends Phaser.Scene {
     constructor(){
@@ -54,15 +56,19 @@ export default class BootScene extends Phaser.Scene {
             percentText.destroy();
             assetText.destroy();
         });
-
+        // CAMERA ASSETS
+        this.cameras.main.setBackgroundColor(0x00000);
+        this.cameras.main.height = 256;
+        this.cameras.main.width = 336;
+        this.cameras.main.setPosition(32,32);
         // MAIN MENU
         this.load.audio("elaugh", eLaugh)
         this.load.audio("mainMusic", mainMusic);
         this.load.image("logo", logoImg);
         this.load.script('webfont', 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js');
-        // MAP ASSETS
-        this.load.image("tiles", "src/img/map/tf_jungle_tileset.png");
-        this.load.tilemapTiledJSON("map", "src/tilemaps/Map.json");
+        // MAIN CHARACTER ASSETS
+        this.load.atlas('knight', knightpng, knightatlas);
+
 
     }
     create(){
