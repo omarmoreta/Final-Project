@@ -32,7 +32,7 @@ export default class MainmenuScene extends Phaser.Scene {
         let add = this.add;
         WebFont.load({
             google: {
-                families: [ 'Rubik Glitch', 'Finger Paint', 'Nosifer' ]
+                families: [ 'Rubik Glitch', 'Finger Paint']
             },
             active: function(){
                 const maintitle = add.text(screenCenterX / 2 - 30, screenCenterY + 50, game.config.gameTitle, { fontFamily: 'Rubik Glitch', fontSize: 24, fill: '#DD636E' });
