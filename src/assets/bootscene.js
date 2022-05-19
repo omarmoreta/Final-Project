@@ -1,14 +1,15 @@
 import Phaser from "phaser";
 import logoImg from "../../public/logoxd.png";
-import mainMusic from "../../public/maintitlemusic.mp3"
-import gameMusic from "../../public/backgroundMusic.mp3"
-import eLaugh from "../../public/evil.mp3"
-import knightpng from "../../public/knight.png"
-import knightatlas from "../../public/knight_atlas.json"
-import mappng from "../../public/tf_jungle_tileset.png"
-import mapjson from "../../public/Map.json"
-import trollpng from "../../public/troll-enemy.png"
-import trolljson from "../../public/troll-enemy_atlas.json"
+import mainMusic from "../../public/maintitlemusic.mp3";
+import gameMusic from "../../public/backgroundMusic.mp3";
+import eLaugh from "../../public/evil.mp3";
+import knightpng from "../../public/knight.png";
+import knightatlas from "../../public/knight_atlas.json";
+import mappng from "../../public/tf_jungle_tileset.png";
+import mapjson from "../../public/Map.json";
+import trollpng from "../../public/troll-enemy.png";
+import trolljson from "../../public/troll-enemy_atlas.json";
+import pausebutton from "../../public/pause-play.png";
 
 export default class BootScene extends Phaser.Scene {
     constructor() {
@@ -20,8 +21,8 @@ export default class BootScene extends Phaser.Scene {
         var width = this.cameras.main.worldView.x + this.cameras.main.width;
         var height = this.cameras.main.worldView.y + this.cameras.main.height;
         var loadingText = this.make.text({
-            x: width / 2,
-            y: height / 2 - 20,
+            x: width / 2 - 40,
+            y: height / 2 - 60,
             text: 'Loading...',
             style: {
                 font: '20px monospace',
@@ -30,8 +31,8 @@ export default class BootScene extends Phaser.Scene {
         });
         loadingText.setOrigin(0.5);
         var percentText = this.make.text({
-            x: width / 2,
-            y: height / 2 + 10,
+            x: width / 2 - 50,
+            y: height / 2 - 30,
             text: '0%',
             style: {
                 font: '18px monospace',
@@ -40,8 +41,8 @@ export default class BootScene extends Phaser.Scene {
         });
         percentText.setOrigin(0.5);
         var assetText = this.make.text({
-            x: width / 2,
-            y: height / 2 + 50,
+            x: width / 2 - 50,
+            y: height / 2 + 10,
             text: '',
             style: {
                 font: '18px monospace',
@@ -80,10 +81,11 @@ export default class BootScene extends Phaser.Scene {
         this.load.atlas("troll-enemy", trollpng, trolljson);
         // GAME SFX / MUSIC
         this.load.audio("backgroundMusic", gameMusic);
-
-
+        // PAUSE BUTTON
+        this.load.image("pauseButton", pausebutton);
     }
     create() {
+        this.input.setDefaultCursor(`crosshair`);
         this.cameras.main.fadeOut(1000, 0, 0, 0);
         this.cameras.main.once(
             Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE,
