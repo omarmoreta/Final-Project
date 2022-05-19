@@ -12,13 +12,13 @@ export default class MainmenuScene extends Phaser.Scene {
     create() {
         // MUSIC
         music = this.sound.add("mainMusic", {
-            volume: 0.06,
+            volume: 0.02,
             loop: true,
         });
         music.play();
         // EVIL LAUGH SFX
         laugh = this.sound.add("elaugh", {
-            volume: 0.6,
+            volume: 0.02,
             loop: false,
         });
         this.add

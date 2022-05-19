@@ -23,11 +23,6 @@ module.exports = {
         test: /\.(gif|png|jpe?g|svg|xml|mp3)$/i,
         use: "file-loader",
       },
-      {
-        test: /\.(png|gif|cur|jpg)$/,
-        use: "url-loader",
-        query: {limit: 8192},
-      }
     ],
   },
   plugins: [

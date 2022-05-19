@@ -59,5 +59,6 @@ export default class MyGame extends Phaser.Scene {
             this.scene.launch('pause');
         }
         this.player.update();
+
     }
 }
