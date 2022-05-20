@@ -38,6 +38,7 @@ export default class MyGame extends Phaser.Scene {
     this.trollRight = new Troll(this, 360, 50, "troll-enemy").setScale(1);
     this.trollLeft = new Troll(this, 90, 50, "troll-enemy").setScale(1);
     this.trollBig = new Troll(this, 240, 50, "troll-enemy").setScale(1.5);
+
     // PHYSICS & COLLISION
     blockedLayer.setCollisionByProperty({ collide: true });
     // PLAYER PHYSICS
@@ -51,12 +52,21 @@ export default class MyGame extends Phaser.Scene {
     this.trollRight.body.setCollideWorldBounds(true).setImmovable(true);
     // PAUSE SCENE
     pauseKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
+    console.log(this);
   }
 
   update(time, delta) {
     if (pauseKey.isDown) {
       this.scene.pause();
       this.scene.launch("pause");
+    }
+    if (this.player.x != this.trollBig.x) {
+      this.physics.moveToObject(this.trollBig, this.player, 20);
+      this.trollBig.anims.play("trollwalk");
+      this.physics.moveToObject(this.trollLeft, this.player, 40);
+      this.trollLeft.anims.play("trollwalk");
+      this.physics.moveToObject(this.trollRight, this.player, 30);
+      this.trollRight.anims.play("trollwalk");
     }
     this.player.update();
   }
