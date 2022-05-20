@@ -32,5 +32,5 @@ export default class Troll extends Entity {
     });
     this.anims.play("trollidle");
   }
-  update() { }
+  update() {}
 }
