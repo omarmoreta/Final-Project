@@ -2,6 +2,8 @@ import Phaser from "phaser";
 import Player from "./player.js";
 import Troll from "./troll";
 
+let pauseKey;
+
 export default class MyGame extends Phaser.Scene {
   constructor() {
     super("thisGame");
@@ -41,9 +43,6 @@ export default class MyGame extends Phaser.Scene {
     blockedLayer.setCollisionByProperty({ collide: true });
     // PLAYER PHYSICS
     this.physics.add.collider(this.player, blockedLayer);
-    this.physics.add.collider(this.trollRight, blockedLayer);
-    this.physics.add.collider(this.trollLeft, blockedLayer);
-    this.physics.add.collider(this.trollBig, blockedLayer);
     this.physics.add.collider(this.player, this.trollRight);
     this.physics.add.collider(this.player, this.trollLeft);
     this.physics.add.collider(this.player, this.trollBig);
@@ -51,9 +50,16 @@ export default class MyGame extends Phaser.Scene {
     this.trollBig.body.setCollideWorldBounds(true).setImmovable(true);
     this.trollLeft.body.setCollideWorldBounds(true).setImmovable(true);
     this.trollRight.body.setCollideWorldBounds(true).setImmovable(true);
+
+    // PAUSE SCENE
+    pauseKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
   }
 
   update(time, delta) {
+    if (pauseKey.isDown) {
+      this.scene.pause();
+      this.scene.launch("pause");
+    }
     this.player.update();
   }
 }
