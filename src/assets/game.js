@@ -1,7 +1,6 @@
 import Phaser from "phaser";
 import Player from "./player.js";
 import Troll from "./troll";
-
 let pauseKey;
 
 export default class MyGame extends Phaser.Scene {
@@ -50,7 +49,6 @@ export default class MyGame extends Phaser.Scene {
     this.trollBig.body.setCollideWorldBounds(true).setImmovable(true);
     this.trollLeft.body.setCollideWorldBounds(true).setImmovable(true);
     this.trollRight.body.setCollideWorldBounds(true).setImmovable(true);
-
     // PAUSE SCENE
     pauseKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
   }

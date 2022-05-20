@@ -5,7 +5,7 @@ let resumeKey;
 export default class PauseUI extends Phaser.Scene {
     constructor() {
         super('pause');
-        Phaser.Scene.call(this,{key:'pause'})
+        Phaser.Scene.call(this, { key: 'pause' })
     }
     preload() {
     }
@@ -18,17 +18,17 @@ export default class PauseUI extends Phaser.Scene {
         let add = this.add;
         WebFont.load({
             google: {
-                families: ['Rubik Glitch', 'Finger Paint']
+                families: ['Finger Paint']
             },
             active: function () {
-                const pauseText = add.text(screenCenterX / 2 +50, screenCenterY -40, "PAUSED", { fontFamily: 'Rubik Glitch', fontSize: 24, fill: '#ffffff' });
+                const pauseText = add.text(screenCenterX / 2 + 50, screenCenterY - 40, "PAUSED", { fontFamily: 'Finger Paint', fontSize: 24, fill: '#ffffff' });
             }
         })
-    
-            
+
+
     }
     update() {
-        if (resumeKey.isDown){
+        if (resumeKey.isDown) {
             this.scene.stop()
             this.scene.resume('thisGame')
         }
