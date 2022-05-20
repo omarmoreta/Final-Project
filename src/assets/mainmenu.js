@@ -12,15 +12,27 @@ export default class MainmenuScene extends Phaser.Scene {
     create() {
         // MUSIC
         music = this.sound.add("mainMusic", {
-            volume: 0.06,
+            volume: 0.02,
             loop: true,
         });
         music.play();
         // EVIL LAUGH SFX
         laugh = this.sound.add("elaugh", {
-            volume: 0.6,
+            volume: 0.02,
             loop: false,
         });
+        this.add
+            .image(380, 15, "pauseButton")
+            .setInteractive()
+            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_DOWN, () => {
+                if (!this.paused) {
+                    this.paused = true;
+                    music.pause();
+                } else {
+                    this.paused = false;
+                    music.resume();
+                }
+            });
         // SCREEN POSITIONING
         const screenCenterX = this.cameras.main.worldView.x + this.cameras.main.width / 2;
         const screenCenterY = this.cameras.main.worldView.y + this.cameras.main.height / 2;
@@ -55,7 +67,7 @@ export default class MainmenuScene extends Phaser.Scene {
         this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, (cam, effect) => {
             this.time.delayedCall(1000, () => {
                 this.scene.start('thisGame');
-                this.scene.start('Interface');
+                this.scene.start('interface');
                 this.scene.start('Pause');
             })
         })

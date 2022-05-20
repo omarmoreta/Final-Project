@@ -7,7 +7,6 @@ export default class Player extends Entity {
         this.facingLeft = false;
         this.health = health;
 
-
         const anims = scene.anims;
         anims.create({
             key: "idleright",
@@ -69,6 +68,7 @@ export default class Player extends Entity {
 
     create() {
         this.player.setDepth(10);
+
     }
 
     update() {
