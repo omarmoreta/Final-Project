@@ -50,6 +50,9 @@ export default class MyGame extends Phaser.Scene {
     this.trollBig.body.setCollideWorldBounds(true).setImmovable(true);
     this.trollLeft.body.setCollideWorldBounds(true).setImmovable(true);
     this.trollRight.body.setCollideWorldBounds(true).setImmovable(true);
+    this.physics.add.collider(this.trollBig, blockedLayer);
+    this.physics.add.collider(this.trollRight, blockedLayer);
+    this.physics.add.collider(this.trollLeft, blockedLayer);
     // PAUSE SCENE
     pauseKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
     console.log(this);
