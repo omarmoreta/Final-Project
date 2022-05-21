@@ -30,7 +30,7 @@ export default class Troll extends Entity {
       frameRate: 8,
       repeat: -1,
     });
-    this.anims.play("trollidle");
+    this.anims.play("trollwalk");
   }
-  update() { }
+  update() {}
 }
