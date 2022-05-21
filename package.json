@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack/prod.js ",
-    "start": "webpack-dev-server --config webpack/base.js --open"
+    "start": "node server.js",
+    "dev": "webpack-dev-server --config webpack/base.js --open",
+    "heroku-postbuild": "webpack -p"
   },
   "keywords": [],
   "author": "Kevin Laux, German Almonte, Omar Moreta",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.18.1",
     "phaser": "^3.55.2"
   },
   "devDependencies": {
