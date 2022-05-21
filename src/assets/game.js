@@ -65,11 +65,23 @@ export default class MyGame extends Phaser.Scene {
     }
     if (this.player.x != this.trollBig.x) {
       this.physics.moveToObject(this.trollBig, this.player, 20);
-      this.trollBig.anims.play("trollwalk");
       this.physics.moveToObject(this.trollLeft, this.player, 40);
-      this.trollLeft.anims.play("trollwalk");
       this.physics.moveToObject(this.trollRight, this.player, 30);
-      this.trollRight.anims.play("trollwalk");
+    }
+    if (this.player.x < this.trollBig.x) {
+      this.trollBig.flipX = true;
+    } else {
+      this.trollBig.flipX = false;
+    }
+    if (this.player.x < this.trollLeft.x) {
+      this.trollLeft.flipX = true;
+    } else {
+      this.trollLeft.flipX = false;
+    }
+    if (this.player.x < this.trollRight.x) {
+      this.trollRight.flipX = true;
+    } else {
+      this.trollRight.flipX = false;
     }
     this.player.update();
   }
