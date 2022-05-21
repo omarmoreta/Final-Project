@@ -11,6 +11,7 @@ import trollpng from "../../public/troll-enemy.png";
 import trolljson from "../../public/troll-enemy_atlas.json";
 import pausebutton from "../../public/pause-play.png";
 import footstep from "../../public/footstep.mp3";
+import trollGrowl from "../../public/troll-sounds.mp3";
 
 export default class BootScene extends Phaser.Scene {
   constructor() {
@@ -86,6 +87,7 @@ export default class BootScene extends Phaser.Scene {
     // GAME SFX / MUSIC
     this.load.audio("backgroundMusic", gameMusic);
     this.load.audio("footstepSFX", footstep);
+    this.load.audio("trollGrowlSFX", trollGrowl);
     // PAUSE BUTTON
     this.load.image("pauseButton", pausebutton);
   }
