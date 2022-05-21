@@ -70,6 +70,23 @@ The Game of Nothing (github.com)
 ## ChangeLogs
 From most recent commits down to the oldest.
 
+- merging interface
+- merged PauseUI
+- adding all branches together
+- added walking sfx to knight
+- added mute button, changed cursor, added stats, added interface scene
+- added game soundtrack
+- added pause scene and pause ui
+- Merge pull request #30 from omarmoreta/Player
+- Merge branch 'main' of https://github.com/omarmoreta/Final-Project into Player Updating main
+- merged player and troll / map
+- Merge branch 'troll-and-map' of https://github.com/omarmoreta/Final-Project into troll-and-map
+- working repo with troll and map
+- added preloading character assets, camera assets, physics
+- added player, and player controls
+- added entity properties
+- added character cameras and basic game scene config
+- Update README.md
 - added trolls and map
 - merging Mainmenu branch
 - merging Bootscene branch
@@ -79,7 +96,10 @@ From most recent commits down to the oldest.
 - added temp music and sfx to main menu
 - added main menu
 - added Bootscene and config
+- Merge branch 'main' into main
 - edited readme config
 - updated readme to include google doc from noshua
+- Update package-lock.json
 - adding license and source to README
 - Initial commit
+
