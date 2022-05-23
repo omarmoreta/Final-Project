@@ -7,8 +7,8 @@ export default class WinScene extends Phaser.Scene {
     preload() {
     }
     create() {
-        resumeKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
-        // PAUSE UI
+        restartKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.X);
+        // WIN UI
         const screenCenterX = this.cameras.main.worldView.x + this.cameras.main.width / 2;
         const screenCenterY = this.cameras.main.worldView.y + this.cameras.main.height / 2;
         // FONT
@@ -18,12 +18,17 @@ export default class WinScene extends Phaser.Scene {
                 families: ['Finger Paint']
             },
             active: function () {
-                const pauseText = add.text(screenCenterX / 2 + 50, screenCenterY - 40, "PAUSED", { fontFamily: 'Finger Paint', fontSize: 24, fill: '#ffffff' });
+                const winText = add.text(screenCenterX / 2 + 50, screenCenterY - 40, "YOU WON!", { fontFamily: 'Finger Paint', fontSize: 24, fill: '#ffd700' });
+                const restartText = add.text(screenCenterX / 2 + 50, screenCenterY - 60, "Press X to restart!", { fontFamily: 'Finger Paint', fontSize: 24, fill: '#ffd700' });
             }
         })
 
 
     }
     update() {
+        if (restartKey.isDown){
+            this.scene.stop();
+            this.scene.play('Mainmenu')
+        }
     }
 }
