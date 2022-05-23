@@ -11,6 +11,9 @@ export const config = {
       gravity: { y: 0 },
     },
   },
+  dom: {
+    createContainer: true
+},
   scale: {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
