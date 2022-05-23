@@ -8,6 +8,7 @@ import GameUI from "./assets/gameui";
 import WinScene from "./assets/winscene.js";
 import LoseScene from "./assets/losescene.js";
 import LoginScene from "./assets/loginscene.js";
+import RegisterScene from "./assets/registerscene.js";
 
 class Game extends Phaser.Game {
   constructor() {
@@ -15,6 +16,7 @@ class Game extends Phaser.Game {
     this.scene.add("thisGame", MyGame);
     this.scene.add("Boot", BootScene);
     this.scene.add("Login", LoginScene);
+    this.scene.add("Register", RegisterScene);
     this.scene.add("Mainmenu", MainmenuScene);
     this.scene.add("pause", PauseUI);
     this.scene.add("interface", GameUI);

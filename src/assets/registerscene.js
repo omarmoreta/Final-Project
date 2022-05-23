@@ -1,10 +1,9 @@
 import Phaser from "phaser";
 
-let complete = false;
-let register = false;
-export default class LoginScene extends Phaser.Scene {
+let registered = false;
+export default class RegisterScene extends Phaser.Scene {
     constructor() {
-        super('Login');
+        super('Register');
     }
     preload() {
        
@@ -13,22 +12,16 @@ export default class LoginScene extends Phaser.Scene {
        
         let width = this.cameras.main.worldView.x + this.cameras.main.width;
         let height = this.cameras.main.worldView.y + this.cameras.main.height;
-
-        let text = this.add.text(10, 10, 'Please Sign in to play', { color: 'white', fontFamily: 'Arial', fontSize: '14px '});
-    
-        let element = this.add.dom(width / 2, height / 2 + 100 ).createFromCache('nameform').setScale(0.4);
+        let text = this.add.text(10, 10, 'Please Register to play', { color: 'red', fontFamily: 'Arial', fontSize: '14px '});
+        let element = this.add.dom(width / 2, height / 2 + 100 ).createFromCache('regform').setScale(0.4);
     
         element.setPerspective(200);
     
         element.addListener('click');
         
         element.on('click', function (event) {
-
-            if (event.target.name === 'registerButton'){
-                register = true
-            }
-            
-            if (event.target.name === 'loginButton')
+    
+            if (event.target.name === 'regButton')
             {
                 let inputUsername = this.getChildByName('username');
                 let inputPassword = this.getChildByName('password');
@@ -49,12 +42,7 @@ export default class LoginScene extends Phaser.Scene {
                     });
                     //  Populate the text with whatever they typed in as the username!
                     text.setText('Welcome ' + inputUsername.value);
-                    complete = true
-                }
-                else
-                {
-                    //  Flash the prompt
-                    this.scene.tweens.add({ targets: text, alpha: 0.1, duration: 200, ease: 'Power3', yoyo: true });
+                    registered = true
                 }
             }
     
@@ -70,13 +58,9 @@ export default class LoginScene extends Phaser.Scene {
     }
     
     update() {
-        if(complete){
+        if(registered){
+            this.scene.stop("Register")
             this.scene.start("Mainmenu")
-        }
-        if(register){
-            this.scene.start("Register");
-            this.scene.stop("Login");
-           
         }
     }
 }

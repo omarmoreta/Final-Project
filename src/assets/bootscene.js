@@ -12,6 +12,7 @@ import trolljson from "../../public/troll-enemy_atlas.json";
 import pausebutton from "../../public/pause-play.png";
 import footstep from "../../public/footstep.mp3";
 // import logform from "./loginform.html"
+// import regform from "./regform.html"
 
 
 export default class BootScene extends Phaser.Scene {
@@ -91,6 +92,7 @@ export default class BootScene extends Phaser.Scene {
     // PAUSE BUTTON
     this.load.image("pauseButton", pausebutton);
     this.load.html("nameform", "./loginform.html")
+    this.load.html("regform", "./registerform.html")
   }
   create() {
     this.input.setDefaultCursor(`crosshair`);

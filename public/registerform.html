@@ -105,13 +105,13 @@
       position:relative;
       cursor:pointer;
       border: none;  
-      background-color: #37a69b;
-      background-image: linear-gradient(top,#3db0a6,#3111);
+      background-color: #f80b0b;
+      background-image: linear-gradient(top,#ff755d,#3111);
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
       border-bottom-left-radius:5px;
-      box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
+      box-shadow: inset 0px 1px 0px #ec672a, 0px 5px 0px 0px #7a5449, 0px 10px 5px #999;
     }
     
     .shadow {
@@ -125,24 +125,19 @@
     }
     
     input[type="submit"]:active {
-      top:3px;
-      box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #31524d, 0px 5px 3px #999;
+      /* top:3px; */
+      box-shadow: inset 0px 1px 0px #ec372a, 0px 2px 0px 0px #523531, 0px 5px 3px #999;
     }    
     
-    .login{
+    .reg{
       top: -10px;
-    }
-    .register{
-      top: -20px;
     }
     </style>
     
     <div class="login">
-        <input type="text" placeholder="Username" id="username" name="username">
-        <input type="password" placeholder="password" id="password" name="password">
+       <input type="text" placeholder="Choose yer nickname" id="username" name="username">
+        <input type="password" placeholder="Choose thy password" id="password" name="password">
         <!-- <a href="#" class="register">register</a> -->
-        <a href="#" class="forgot">forgot password?</a>
-        <input type="submit" class="login" value="Sign In" name="loginButton">
-        <input type="submit" class="register" value="Register" name="registerButton">
+        <input type="submit" class="register" value="Register" name="regButton">
     </div>
     <div class="shadow"></div>
