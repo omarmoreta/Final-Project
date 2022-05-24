@@ -12,6 +12,7 @@ import trolljson from "../../public/troll-enemy_atlas.json";
 import pausebutton from "../../public/pause-play.png";
 import footstep from "../../public/footstep.mp3";
 import trollGrowl from "../../public/troll-sounds.mp3";
+import bullet from "../../public/bullet_3.png";
 
 export default class BootScene extends Phaser.Scene {
   constructor() {
@@ -90,6 +91,8 @@ export default class BootScene extends Phaser.Scene {
     this.load.audio("trollGrowlSFX", trollGrowl);
     // PAUSE BUTTON
     this.load.image("pauseButton", pausebutton);
+    // LASER
+    this.load.image("bullet", bullet);
   }
   create() {
     this.input.setDefaultCursor(`crosshair`);

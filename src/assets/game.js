@@ -1,6 +1,8 @@
 import Phaser from "phaser";
 import Player from "./player.js";
 import Troll from "./troll";
+import Bullets from "./bullets";
+
 let pauseKey;
 let trollGrowl;
 let footstepsfx;
@@ -8,6 +10,7 @@ let walkDown;
 let walkUp;
 let walkLeft;
 let walkRight;
+let spaceBar;
 
 export default class MyGame extends Phaser.Scene {
   constructor() {
@@ -19,6 +22,7 @@ export default class MyGame extends Phaser.Scene {
     this.player;
     this.keys;
     this.troll;
+    this.bullets;
   }
 
   hurtPlayer() {
@@ -28,6 +32,18 @@ export default class MyGame extends Phaser.Scene {
       delay: 500,
       callback: () => {
         this.player.clearTint();
+      },
+      callbackScope: this,
+      loop: false,
+    });
+  }
+
+  hurtEnemy() {
+    this.trollBig.setTint(0xff0000);
+    this.time.addEvent({
+      delay: 500,
+      callback: () => {
+        this.trollBig.clearTint();
       },
       callbackScope: this,
       loop: false,
@@ -70,7 +86,7 @@ export default class MyGame extends Phaser.Scene {
     this.physics.add.collider(this.player, this.enemies);
     this.physics.add.overlap(
       this.player,
-      this.enemies,
+      this.trollBig,
       this.hurtPlayer,
       null,
       this
@@ -104,6 +120,18 @@ export default class MyGame extends Phaser.Scene {
       loop: true,
     });
     trollGrowl.play();
+    // BULLETS
+    this.bullets = new Bullets(this);
+    spaceBar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+    this.add.sprite(900, 900, "bullet");
+    // this.physics.add.collider(this.trollBig, this.bullets);
+    this.physics.add.overlap(
+      this.bullets,
+      this.trollBig,
+      this.hurtEnemy(),
+      null,
+      this
+    );
   }
 
   update(time, delta) {
@@ -146,6 +174,14 @@ export default class MyGame extends Phaser.Scene {
       this.trollRight.flipX = true;
     } else {
       this.trollRight.flipX = false;
+    }
+    if (spaceBar.isDown) {
+      this.bullets.fireBullet(this.player.x, this.player.y);
+    }
+    if (this.bullets.x === this.trollBig.x) {
+      this.bullets.setActive(false);
+      this.bullets.setVisible(false);
+      this.trollBig.isDead;
     }
     this.player.update();
   }
