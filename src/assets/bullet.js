@@ -17,12 +17,7 @@ export default class Bullet extends Phaser.Physics.Arcade.Sprite {
   preUpdate(time, delta) {
     super.preUpdate(time, delta);
 
-    // if (this.y <= -32) {
-    //   this.setActive(false);
-    //   this.setVisible(false);
-    // }
-    this.y -= this.speed * delta;
-    if (this.y < -50) {
+    if (this.y <= -32) {
       this.setActive(false);
       this.setVisible(false);
     }

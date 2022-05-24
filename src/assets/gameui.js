@@ -11,7 +11,7 @@ export default class gameUI extends Phaser.Scene {
     this.cameras.main.fadeIn(1000, 0, 0, 0);
     // MUSIC
     music = this.sound.add("backgroundMusic", {
-      volume: 0.01,
+      volume: 0.05,
       loop: true,
     });
     music.play();

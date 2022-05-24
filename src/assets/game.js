@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import Player from "./player.js";
 import Troll from "./troll";
 import Bullets from "./bullets";
+import gameUI from "./gameui.js";
 
 let pauseKey;
 let trollGrowl;
@@ -11,6 +12,7 @@ let walkUp;
 let walkLeft;
 let walkRight;
 let spaceBar;
+
 
 export default class MyGame extends Phaser.Scene {
   constructor() {
@@ -32,6 +34,8 @@ export default class MyGame extends Phaser.Scene {
       delay: 500,
       callback: () => {
         this.player.clearTint();
+        this.scene.stop("thisGame");
+        this.scene.start("Losing")
       },
       callbackScope: this,
       loop: false,
@@ -79,19 +83,27 @@ export default class MyGame extends Phaser.Scene {
     // PLAYER PHYSICS
     this.physics.add.collider(this.player, blockedLayer);
     // COLLISIONS
-    this.enemies = this.physics.add.group();
-    this.enemies.add(this.trollBig);
-    this.enemies.add(this.trollLeft);
-    this.enemies.add(this.trollRight);
-    this.physics.add.collider(this.player, this.enemies);
-    this.physics.add.overlap(
+    this.physics.add.collider(
       this.player,
       this.trollBig,
       this.hurtPlayer,
       null,
       this
     );
-    this.physics.add.collider(this.player, this.enemies);
+    this.physics.add.collider(
+      this.player,
+      this.trollLeft,
+      this.hurtPlayer,
+      null,
+      this
+    );
+    this.physics.add.collider(
+      this.player,
+      this.trollRight,
+      this.hurtPlayer,
+      null,
+      this
+    );
     // TROLL PHYSICS
     this.trollBig.body.setCollideWorldBounds(true);
     this.trollLeft.body.setCollideWorldBounds(true);
@@ -123,15 +135,30 @@ export default class MyGame extends Phaser.Scene {
     // BULLETS
     this.bullets = new Bullets(this);
     spaceBar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-    this.add.sprite(900, 900, "bullet");
-    // this.physics.add.collider(this.trollBig, this.bullets);
-    this.physics.add.overlap(
-      this.bullets,
-      this.trollBig,
-      this.hurtEnemy(),
-      null,
-      this
-    );
+
+    // this.physics.add.collider(
+    //   this.bullets,
+    //   this.trollBig,
+    //   this.hurtEnemy(),
+    //   null,
+    //   this
+    // );
+    // this.physics.add.collider(
+    //   this.bullets,
+    //   this.trollLeft,
+    //   this.hurtEnemy(),
+    //   null,
+    //   this
+    // );
+    // this.physics.add.collider(
+    //   this.bullets,
+    //   this.trollRight,
+    //   this.hurtEnemy(),
+    //   null,
+    //   this
+    // );
+  
+    
   }
 
   update(time, delta) {
@@ -155,9 +182,9 @@ export default class MyGame extends Phaser.Scene {
     }
     // ENEMY FOLLOW
     if (this.player.x != this.trollBig.x) {
-      this.physics.moveToObject(this.trollBig, this.player, 20);
-      this.physics.moveToObject(this.trollLeft, this.player, 40);
-      this.physics.moveToObject(this.trollRight, this.player, 30);
+      this.physics.moveToObject(this.trollBig, this.player, 60);
+      this.physics.moveToObject(this.trollLeft, this.player, 75);
+      this.physics.moveToObject(this.trollRight, this.player, 75);
     }
     // ENEMY FACE PLAYER
     if (this.player.x < this.trollBig.x) {
@@ -176,13 +203,9 @@ export default class MyGame extends Phaser.Scene {
       this.trollRight.flipX = false;
     }
     if (spaceBar.isDown) {
-      this.bullets.fireBullet(this.player.x, this.player.y);
-    }
-    if (this.bullets.x === this.trollBig.x) {
-      this.bullets.setActive(false);
-      this.bullets.setVisible(false);
-      this.trollBig.isDead;
+      this.bullets.fireBullet(this.player.x, this.player.y - 10);
     }
     this.player.update();
+
   }
 }
