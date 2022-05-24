@@ -11,6 +11,9 @@ import trollpng from "../../public/troll-enemy.png";
 import trolljson from "../../public/troll-enemy_atlas.json";
 import pausebutton from "../../public/pause-play.png";
 import footstep from "../../public/footstep.mp3";
+// import logform from "./loginform.html"
+// import regform from "./regform.html"
+
 
 export default class BootScene extends Phaser.Scene {
   constructor() {
@@ -88,6 +91,8 @@ export default class BootScene extends Phaser.Scene {
     this.load.audio("footstepSFX", footstep);
     // PAUSE BUTTON
     this.load.image("pauseButton", pausebutton);
+    this.load.html("nameform", "./loginform.html")
+    this.load.html("regform", "./registerform.html")
   }
   create() {
     this.input.setDefaultCursor(`crosshair`);
@@ -95,7 +100,7 @@ export default class BootScene extends Phaser.Scene {
     this.cameras.main.once(
       Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE,
       (cam, effect) => {
-        this.scene.start("Mainmenu");
+        this.scene.start("Login");
       }
     );
   }

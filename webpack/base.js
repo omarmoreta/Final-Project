@@ -23,6 +23,13 @@ module.exports = {
         test: /\.(gif|png|jpe?g|svg|xml|mp3)$/i,
         use: "file-loader",
       },
+      {
+        test: /\.html$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'html-loader'
+        }
+      }
     ],
   },
   plugins: [
