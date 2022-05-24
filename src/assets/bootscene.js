@@ -14,6 +14,8 @@ import footstep from "../../public/footstep.mp3";
 // import logform from "./loginform.html"
 // import regform from "./regform.html"
 
+import trollGrowl from "../../public/troll-sounds.mp3";
+import bullet from "../../public/bullet_3.png";
 
 export default class BootScene extends Phaser.Scene {
   constructor() {
@@ -89,10 +91,13 @@ export default class BootScene extends Phaser.Scene {
     // GAME SFX / MUSIC
     this.load.audio("backgroundMusic", gameMusic);
     this.load.audio("footstepSFX", footstep);
+    this.load.audio("trollGrowlSFX", trollGrowl);
     // PAUSE BUTTON
     this.load.image("pauseButton", pausebutton);
     this.load.html("nameform", "./loginform.html")
     this.load.html("regform", "./registerform.html")
+    // LASER
+    this.load.image("bullet", bullet);
   }
   create() {
     this.input.setDefaultCursor(`crosshair`);

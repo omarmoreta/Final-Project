@@ -24,5 +24,4 @@ export const config = {
   audio: {
     disableWebAudio: false,
   },
-  
 };

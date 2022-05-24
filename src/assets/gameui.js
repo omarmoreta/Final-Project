@@ -1,10 +1,6 @@
 import Phaser from "phaser";
 let music;
-let footstepsfx;
-let walkDown;
-let walkUp;
-let walkLeft;
-let walkRight;
+
 export default class gameUI extends Phaser.Scene {
   constructor() {
     super("interface");
@@ -54,29 +50,6 @@ export default class gameUI extends Phaser.Scene {
       fill: "#FFFFFF",
     });
     text.alpha = 1.0;
-    // FOOTSTEP
-    footstepsfx = this.sound.add("footstepSFX", {
-      volume: 0.25,
-      loop: true,
-    });
-    footstepsfx.play();
-    walkDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
-    walkUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
-    walkLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
-    walkRight = this.input.keyboard.addKey(
-      Phaser.Input.Keyboard.KeyCodes.RIGHT
-    );
   }
-  update() {
-    if (
-      walkDown.isDown ||
-      walkUp.isDown ||
-      walkLeft.isDown ||
-      walkRight.isDown
-    ) {
-      footstepsfx.resume();
-    } else {
-      footstepsfx.pause();
-    }
-  }
+  update() {}
 }
