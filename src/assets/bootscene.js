@@ -98,8 +98,8 @@ export default class BootScene extends Phaser.Scene {
     this.load.audio("losesfx", loseSFX);
     // PAUSE BUTTON
     this.load.image("pauseButton", pausebutton);
-    // this.load.html("nameform", logform);
-    // this.load.html("regform", regform);
+    this.load.html("nameform", './loginform.html');
+    this.load.html("regform", './registerform.html');
     // LASER
     this.load.image("bullet", bullet);
   }
@@ -109,7 +109,7 @@ export default class BootScene extends Phaser.Scene {
     this.cameras.main.once(
       Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE,
       (cam, effect) => {
-        this.scene.start("Mainmenu");
+        this.scene.start("Login");
       }
     );
   }
