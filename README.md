@@ -1,6 +1,6 @@
 # The Game of Nothing
 
-A 2D Dungeon Crawler game, using Phaser 3, Node, Express, PostgreSQL, Babel 7, AWS Elastic Beanstalk and Webpack 4.
+A 2D Dungeon Crawler game, using Phaser 3, Node, Express, PostgreSQL, Babel 7, Heroku and Webpack 4.
 
 ## Requirements
 
