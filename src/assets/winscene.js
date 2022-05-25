@@ -34,7 +34,6 @@ export default class WinScene extends Phaser.Scene {
     update() {
         if (restartKey.isDown) {
             this.scene.play('Mainmenu');
-            this.scene.stop('interface');
             this.scene.stop();
         }
     }

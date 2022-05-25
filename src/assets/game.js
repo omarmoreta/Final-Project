@@ -163,6 +163,7 @@ export default class MyGame extends Phaser.Scene {
       trollGrowl.stop();
       music.stop();
       this.scene.start('Winning');
+      this.scene.stop('interface')
       this.scene.stop("thisGame");
     }
 
