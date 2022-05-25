@@ -43,7 +43,7 @@ After you run the `npm run build` command, your code will be built into a single
 - For High Score & User Authentication 
 - JSON Web Token
 
-### Deployment: AWS Elastic Beanstalk
+### Deployment: Heroku
 
 ## What is the structure/schema of our documents/tables: 
 https://drive.google.com/file/d/1YD7-nO5_aam4GBDMjXVCtsl36sv1O4rN/view?usp=sharing
