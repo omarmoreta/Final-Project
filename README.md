@@ -70,6 +70,31 @@ The Game of Nothing (github.com)
 ## ChangeLogs
 From most recent commits down to the oldest.
 
+- added controllers and encryption
+- Merge pull request #35 from omarmoreta/WinLoss
+- added register form
+- added login menu
+- added login and loss screen properties and hotkeys, working on login screen
+- Merge branch 'main' of https://github.com/omarmoreta/Final-Project into WinLoss Updating this branch
+- Merge pull request #33 from omarmoreta/heroku
+- merged
+- added base files for winning / losing screen
+- changes
+- make it better
+- initial commit
+- Merge branch 'enemyFollow' of https://github.com/omarmoreta/Final-Project into deployment
+- added flip troll depending on player
+- untracking package-lock and placed in gitignore
+- merging branches with new package-lock changes
+- removed package-lock from being tracked
+- Merge branch 'main' into main
+- Merge branch 'main' of https://github.com/omarmoreta/Final-Project into deployment
+- fix
+- changed var to let
+- added collision for the trolls
+- fixed #16 enemies follow the character at different speeds
+- Merge pull request #31 from omarmoreta/interface
+- Update README.md
 - merging interface
 - merged PauseUI
 - adding all branches together
@@ -96,10 +121,13 @@ From most recent commits down to the oldest.
 - added temp music and sfx to main menu
 - added main menu
 - added Bootscene and config
+- Merge pull request #3 from KevinsCodeStorage/database-integration
+- Merge branch 'main' into database-integration
+- initial database creation
+- Merge pull request #1 from omarmoreta/main
 - Merge branch 'main' into main
 - edited readme config
 - updated readme to include google doc from noshua
 - Update package-lock.json
 - adding license and source to README
 - Initial commit
-
