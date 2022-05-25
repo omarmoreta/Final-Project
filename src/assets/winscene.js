@@ -21,7 +21,6 @@ export default class WinScene extends Phaser.Scene {
             },
             active: function () {
                 const winText = add.text(screenCenterX / 2 + 40, screenCenterY - 40, "YOU WON!", { fontFamily: 'Finger Paint', fontSize: 24, fill: '#ffd700' });
-                const restartText = add.text(screenCenterX / 2 - 20, screenCenterY - 60, "Press X to restart!", { fontFamily: 'Finger Paint', fontSize: 24, fill: '#ffd700' });
             }
         })
         win = this.sound.add("winsfx", {
