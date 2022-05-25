@@ -2,7 +2,6 @@ import Phaser from "phaser";
 import Player from "./player.js";
 import Troll from "./troll";
 import Bullets from "./bullets";
-import gameUI from "./gameui.js";
 
 let pauseKey;
 let trollGrowl;
@@ -12,6 +11,8 @@ let walkUp;
 let walkLeft;
 let walkRight;
 let spaceBar;
+let music;
+let winKey;
 
 
 export default class MyGame extends Phaser.Scene {
@@ -23,7 +24,7 @@ export default class MyGame extends Phaser.Scene {
     this.cameras;
     this.player;
     this.keys;
-    this.troll;
+    this.trolls;
     this.bullets;
   }
 
@@ -34,20 +35,11 @@ export default class MyGame extends Phaser.Scene {
       delay: 500,
       callback: () => {
         this.player.clearTint();
+        footstepsfx.stop();
+        trollGrowl.stop();
+        music.stop();
         this.scene.stop("thisGame");
         this.scene.start("Losing")
-      },
-      callbackScope: this,
-      loop: false,
-    });
-  }
-
-  hurtEnemy() {
-    this.trollBig.setTint(0xff0000);
-    this.time.addEvent({
-      delay: 500,
-      callback: () => {
-        this.trollBig.clearTint();
       },
       callbackScope: this,
       loop: false,
@@ -70,14 +62,17 @@ export default class MyGame extends Phaser.Scene {
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.cameras.main.setRoundPixels(true);
     // PLAYER
-    this.player = new Player(this, 225, 343, "knight").setScale(1);
+    this.player = new Player(this, 200, 343, "knight").setScale(1);
     this.player.body.setCollideWorldBounds(true);
     this.cameras.main.startFollow(this.player, true, 0.1, 0.1);
     // TROLLS
-    this.trollRight = new Troll(this, 360, 50, "troll-enemy").setScale(1);
-    this.trollLeft = new Troll(this, 90, 50, "troll-enemy").setScale(1);
-    this.trollBig = new Troll(this, 240, 50, "troll-enemy").setScale(1.5);
-
+    this.trolls = this.add.group()
+    for (let i = 0; i < 5; i++) {
+      const t = new Troll(this, 60 + 100 * i, 50, 'troll-enemy')
+      t.body.setCollideWorldBounds(true)
+      this.trolls.add(t)
+    }
+    this.physics.add.collider(this.trolls, blockedLayer)
     // PHYSICS & COLLISION
     blockedLayer.setCollisionByProperty({ collide: true });
     // PLAYER PHYSICS
@@ -85,32 +80,11 @@ export default class MyGame extends Phaser.Scene {
     // COLLISIONS
     this.physics.add.collider(
       this.player,
-      this.trollBig,
+      this.trolls,
       this.hurtPlayer,
       null,
       this
     );
-    this.physics.add.collider(
-      this.player,
-      this.trollLeft,
-      this.hurtPlayer,
-      null,
-      this
-    );
-    this.physics.add.collider(
-      this.player,
-      this.trollRight,
-      this.hurtPlayer,
-      null,
-      this
-    );
-    // TROLL PHYSICS
-    this.trollBig.body.setCollideWorldBounds(true);
-    this.trollLeft.body.setCollideWorldBounds(true);
-    this.trollRight.body.setCollideWorldBounds(true);
-    this.physics.add.collider(this.trollBig, blockedLayer);
-    this.physics.add.collider(this.trollRight, blockedLayer);
-    this.physics.add.collider(this.trollLeft, blockedLayer);
     // PAUSE SCENE
     pauseKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
     // PLAYER MOVEMENT
@@ -120,7 +94,7 @@ export default class MyGame extends Phaser.Scene {
     walkRight = this.input.keyboard.addKey(
       Phaser.Input.Keyboard.KeyCodes.RIGHT
     );
-    // FOOTSTEP
+    // FOOTSTEP SFX
     footstepsfx = this.sound.add("footstepSFX", {
       volume: 0.25,
       loop: true,
@@ -132,42 +106,30 @@ export default class MyGame extends Phaser.Scene {
       loop: true,
     });
     trollGrowl.play();
+    // MUSIC
+    music = this.sound.add("backgroundMusic", {
+      volume: 0.05,
+      loop: true,
+    });
+    music.play();
     // BULLETS
     this.bullets = new Bullets(this);
     spaceBar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+    winKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.T);
 
-    // this.physics.add.collider(
-    //   this.bullets,
-    //   this.trollBig,
-    //   this.hurtEnemy(),
-    //   null,
-    //   this
-    // );
-    // this.physics.add.collider(
-    //   this.bullets,
-    //   this.trollLeft,
-    //   this.hurtEnemy(),
-    //   null,
-    //   this
-    // );
-    // this.physics.add.collider(
-    //   this.bullets,
-    //   this.trollRight,
-    //   this.hurtEnemy(),
-    //   null,
-    //   this
-    // );
-  
-    
   }
 
   update(time, delta) {
     if (pauseKey.isDown) {
       trollGrowl.pause();
+      footstepsfx.pause();
+      music.pause();
       this.scene.pause();
       this.scene.launch("pause");
     } else {
+      music.resume();
       trollGrowl.resume();
+      footstepsfx.resume();
     }
     // PLAYER WALK
     if (
@@ -180,32 +142,29 @@ export default class MyGame extends Phaser.Scene {
     } else {
       footstepsfx.pause();
     }
-    // ENEMY FOLLOW
-    if (this.player.x != this.trollBig.x) {
-      this.physics.moveToObject(this.trollBig, this.player, 60);
-      this.physics.moveToObject(this.trollLeft, this.player, 75);
-      this.physics.moveToObject(this.trollRight, this.player, 75);
-    }
-    // ENEMY FACE PLAYER
-    if (this.player.x < this.trollBig.x) {
-      this.trollBig.flipX = true;
-    } else {
-      this.trollBig.flipX = false;
-    }
-    if (this.player.x < this.trollLeft.x) {
-      this.trollLeft.flipX = true;
-    } else {
-      this.trollLeft.flipX = false;
-    }
-    if (this.player.x < this.trollRight.x) {
-      this.trollRight.flipX = true;
-    } else {
-      this.trollRight.flipX = false;
-    }
     if (spaceBar.isDown) {
       this.bullets.fireBullet(this.player.x, this.player.y - 10);
     }
     this.player.update();
+    this.trolls.children.iterate((child) => {
+      if(this.player.x != this.trolls.children){
+        this.physics.moveToObject(child, this.player, 70)
+      }
+      // doesn't work idk why 
+      if(this.player.x < this.trolls.children){
+        child.flipX = true;
+      }  else{
+        child.flipX = false;
+      }
+    })
+
+    if(winKey.isDown){
+      footstepsfx.stop();
+      trollGrowl.stop();
+      music.stop();
+      this.scene.start('Winning');
+      this.scene.stop("thisGame");
+    }
 
   }
 }

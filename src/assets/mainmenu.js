@@ -64,7 +64,7 @@ export default class MainmenuScene extends Phaser.Scene {
     });
     // START INSTRUCTIONS
     const instruction = add.text(
-      screenCenterX / 2 + 40,
+      screenCenterX / 2 + 20,
       screenCenterY + 80,
       "Insert coin to start",
       { fontFamily: "Finger Paint", fontSize: 16, fill: "#ffd700" }
@@ -90,5 +90,5 @@ export default class MainmenuScene extends Phaser.Scene {
       }
     );
   }
-  update() {}
+  update() { }
 }

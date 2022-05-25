@@ -5,9 +5,8 @@ let resumeKey;
 export default class PauseUI extends Phaser.Scene {
   constructor() {
     super("pause");
-    Phaser.Scene.call(this, { key: "pause" });
   }
-  preload() {}
+  preload() { }
   create() {
     resumeKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
     // PAUSE UI
