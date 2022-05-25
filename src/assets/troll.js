@@ -2,14 +2,12 @@ import Phaser from "phaser";
 import Entity from "./entity";
 
 export default class Troll extends Entity {
-  constructor(scene, x, y, textureKey, damage, type, speed) {
-    super(scene, x, y, textureKey, "Troll", type);
+  constructor(scene, x, y, textureKey) {
+    super(scene, x, y, textureKey, "Troll");
 
     const anims = scene.anims;
     this.textureKey = textureKey;
-    this.damage = damage;
-    this.type = type;
-    this.speed = speed;
+    this.speed = 70;
     anims.create({
       key: "trollwalk",
       frames: anims.generateFrameNames("troll-enemy", {
@@ -32,5 +30,6 @@ export default class Troll extends Entity {
     });
     this.anims.play("trollwalk");
   }
-  update() {}
+  update() {
+   }
 }

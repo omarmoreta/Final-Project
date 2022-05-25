@@ -1,5 +1,7 @@
 import Phaser from "phaser";
 
+let restartKey;
+let lose;
 export default class LoseScene extends Phaser.Scene {
     constructor() {
         super('Losing');
@@ -18,17 +20,23 @@ export default class LoseScene extends Phaser.Scene {
                 families: ['Finger Paint']
             },
             active: function () {
-                const loseText = add.text(screenCenterX / 2 + 50, screenCenterY - 40, "YOU LOST!", { fontFamily: 'Finger Paint', fontSize: 24, fill: '#ff0000' });
-                const restartText = add.text(screenCenterX / 2 + 50, screenCenterY - 60, "Press X to restart!", { fontFamily: 'Finger Paint', fontSize: 24, fill: '#ff0000' });
+                const loseText = add.text(screenCenterX / 2 + 40, screenCenterY - 40, "YOU LOST!", { fontFamily: 'Finger Paint', fontSize: 24, fill: '#ff0000' });
+                const restartText = add.text(screenCenterX / 2 - 20, screenCenterY - 60, "Press X to restart!", { fontFamily: 'Finger Paint', fontSize: 24, fill: '#ff0000' });
             }
         })
-
+        lose = this.sound.add("losesfx", {
+            volume: 0.05,
+            loop: false,
+          });
+        lose.play();
 
     }
     update() {
-        if (restartKey.isDown){
-            this.scene.stop();
-            this.scene.play('Mainmenu')
+        if (restartKey.isDown) {
+            this.scene.start('Mainmenu');
+            this.scene.stop('interface');
+            this.scene.stop('Losing');
+
         }
     }
 }
